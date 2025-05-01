@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WooCommerce Order Importer para Odoo</title>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            color: #333;
+            line-height: 1.6;
+        }
+        .oe_container {
+            width: 100%;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .oe_row {
+            margin-bottom: 40px;
+        }
+        .oe_centered {
+            text-align: center;
+        }
+        .oe_span12 {
+            width: 100%;
+        }
+        .oe_mt32 {
+            margin-top: 32px;
+        }
+        .oe_mb32 {
+            margin-bottom: 32px;
+        }
+        .oe_slogan {
+            color: #7c7bad;
+            font-size: 26px;
+            font-weight: 300;
+            margin-bottom: 30px;
+        }
+        .oe_screenshot {
+            max-width: 100%;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+            margin-bottom: 24px;
+            border-radius: 4px;
+        }
+        .oe_title {
+            font-size: 20px;
+            color: #7c7bad;
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+        .oe_feature {
+            margin-bottom: 15px;
+            border-left: 3px solid #7c7bad;
+            padding-left: 15px;
+        }
+        .oe_feature h3 {
+            font-size: 18px;
+            margin-bottom: 5px;
+            color: #555;
+        }
+        .oe_feature p {
+            margin-top: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="oe_container">
+        <div class="oe_row oe_centered">
+            <div class="oe_span12">
+                <h1 class="oe_slogan">WooCommerce Order Importer</h1>
+                <h3 class="oe_slogan">Importa pedidos desde WooCommerce a Odoo de forma automática y sencilla</h3>
+            </div>
+        </div>
+
+        <div class="oe_row">
+            <div class="oe_span12">
+                <p class="oe_mt32">
+                    Este módulo proporciona una integración completa entre WooCommerce y Odoo, permitiendo importar
+                    pedidos de manera manual o automática según el intervalo configurado. Sincroniza clientes, productos
+                    y pedidos manteniendo toda la información relevante.
+                </p>
+            </div>
+        </div>
+
+        <div class="oe_row">
+            <div class="oe_span12">
+                <div class="oe_title">Características principales</div>
+                <div class="oe_feature">
+                    <h3>Importación automática</h3>
+                    <p>Configura la frecuencia de importación que mejor se adapte a tu negocio: cada 15 minutos, 30 minutos, cada hora o diariamente.</p>
+                </div>
+                <div class="oe_feature">
+                    <h3>Mapeo de estados personalizable</h3>
+                    <p>Define cómo se traducen los estados de pedidos de WooCommerce a los estados equivalentes en Odoo.</p>
+                </div>
+                <div class="oe_feature">
+                    <h3>Historial detallado</h3>
+                    <p>Mantén un registro completo de todas las importaciones realizadas, incluyendo errores y estadísticas.</p>
+                </div>
+                <div class="oe_feature">
+                    <h3>Creación automática de entidades</h3>
+                    <p>El sistema puede crear automáticamente clientes y productos si no existen en Odoo.</p>
+                </div>
+                <div class="oe_feature">
+                    <h3>Soporte completo para pedidos</h3>
+                    <p>Importa correctamente productos, impuestos, gastos de envío y notas del cliente.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="oe_row">
+            <div class="oe_span12 oe_centered">
+                <div class="oe_title">Configuración sencilla</div>
+                <p>Sólo necesitas configurar la URL de tu tienda WooCommerce y tus credenciales API para comenzar a importar pedidos.</p>
+                <img src="screenshot1.png" class="oe_screenshot" alt="Configuración">
+            </div>
+        </div>
+
+        <div class="oe_row">
+            <div class="oe_span12 oe_centered">
+                <div class="oe_title">Gestión de importaciones</div>
+                <p>Revisa el historial de importaciones y estadísticas desde un solo lugar.</p>
+                <img src="screenshot2.png" class="oe_screenshot" alt="Historial de importaciones">
+            </div>
+        </div>
+
+        <div class="oe_row">
+            <div class="oe_span12">
+                <div class="oe_title">Requisitos</div>
+                <ul>
+                    <li>Python 3.6 o superior</li>
+                    <li>Odoo 14.0 o superior</li>
+                    <li>Biblioteca Python WooCommerce (<code>pip install woocommerce</code>)</li>
+                    <li>Acceso a la API REST de WooCommerce (v3) en tu tienda</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="oe_row">
+            <div class="oe_span12">
+                <div class="oe_title">Soporte</div>
+                <p>
+                    Para cualquier duda o solicitud de soporte, contacta con nosotros en:
+                    <a href="mailto:soporte@tuempresa.com">soporte@tuempresa.com</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

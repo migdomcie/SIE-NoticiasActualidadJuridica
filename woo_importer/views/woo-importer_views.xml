@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Vista de formulario para el importador -->
+    <record id="view_woo_order_importer_form" model="ir.ui.view">
+        <field name="name">woo.order.importer.form</field>
+        <field name="model">woo.order.importer</field>
+        <field name="arch" type="xml">
+            <form string="Importador de WooCommerce">
+                <header>
+                    <button name="import_orders" string="Importar Ahora" type="object" class="oe_highlight"/>
+                </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="toggle_active" type="object" class="oe_stat_button" icon="fa-archive">
+                            <field name="active" widget="boolean_button" options="{'terminology': 'archive'}"/>
+                        </button>
+                    </div>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" placeholder="Nombre de la conexión..."/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="company_id" groups="base.group_multi_company"/>
+                            <field name="woo_api_url" placeholder="https://tutienda.com"/>
+                            <field name="woo_key" password="True"/>
+                            <field name="woo_secret" password="True"/>
+                            <field name="interval"/>
+                        </group>
+                        <group>
+                            <field name="order_status_to_import"/>
+                            <field name="custom_status" attrs="{'invisible': [('order_status_to_import', '!=', 'custom')], 'required': [('order_status_to_import', '=', 'custom')]}"/>
+                            <field name="pricelist_id"/>
+                            <field name="warehouse_id"/>
+                            <field name="team_id"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Mapeo de Estados" name="status_mapping">
+                            <field name="woo_status_mapping_ids">
+                                <tree editable="bottom">
+                                    <field name="woo_status"/>
+                                    <field name="odoo_status"/>
+                                </tree>
+                            </field>
+                        </page>
+                        <page string="Historial de Importaciones" name="import_history">
+                            <field name="import_log_ids" readonly="1">
+                                <tree decoration-danger="status=='error'" decoration-success="status=='completed'" decoration-info="status=='running'">
+                                    <field name="start_date"/>
+                                    <field name="end_date"/>
+                                    <field name="status"/>
+                                    <field name="orders_created"/>
+                                    <field name="orders_skipped"/>
+                                    <field name="duration" widget="float_time"/>
+                                </tree>
+                                <form>
+                                    <group>
+                                        <group>
+                                            <field name="start_date"/>
+                                            <field name="end_date"/>
+                                            <field name="status"/>
+                                        </group>
+                                        <group>
+                                            <field name="orders_created"/>
+                                            <field name="orders_skipped"/>
+                                            <field name="duration" widget="float_time"/>
+                                        </group>
+                                    </group>
+                                    <notebook>
+                                        <page string="Errores" attrs="{'invisible': [('error_message', '=', False)]}">
+                                            <field name="error_message"/>
+                                        </page>
+                                    </notebook>
+                                </form>
+                            </field>
+                        </page>
+                        <page string="Estadísticas" name="stats">
+                            <group>
+                                <group>
+                                    <field name="import_count"/>
+                                    <field name="total_orders_imported"/>
+                                </group>
+                                <group>
+                                    <field name="last_import_date"/>
+                                </group>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Vista de árbol para el importador -->
+    <record id="view_woo_order_importer_tree" model="ir.ui.view">
+        <field name="name">woo.order.importer.tree</field>
+        <field name="model">woo.order.importer</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="woo_api_url"/>
+                <field name="interval"/>
+                <field name="last_import_date"/>
+                <field name="import_count"/>
+                <field name="total_orders_imported"/>
+                <field name="active" invisible="1"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Vista de búsqueda para el importador -->
+    <record id="view_woo_order_importer_search" model="ir.ui.view">
+        <field name="name">woo.order.importer.search</field>
+        <field name="model">woo.order.importer</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="woo_api_url"/>
+                <filter string="Activos" name="active" domain="[('active','=',True)]"/>
+                <filter string="Archivados" name="inactive" domain="[('active','=',False)]"/>
+                <group expand="0" string="Agrupar Por">
+                    <filter string="Intervalo" name="group_by_interval" context="{'group_by': 'interval'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!-- Vista de formulario para el registro de importaciones -->
+    <record id="view_woo_import_log_form" model="ir.ui.view">
+        <field name="name">woo.import.log.form</field>
+        <field name="model">woo.import.log</field>
+        <field name="arch" type="xml">
+            <form string="Registro de Importación">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="importer_id"/>
+                            <field name="start_date"/>
+                            <field name="end_date"/>
+                            <field name="status"/>
+                        </group>
+                        <group>
+                            <field name="orders_created"/>
+                            <field name="orders_skipped"/>
+                            <field name="duration" widget="float_time"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Errores" attrs="{'invisible': [('error_message', '=', False)]}">
+                            <field name="error_message"/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Vista de árbol para el registro de importaciones -->
+    <record id="view_woo_import_log_tree" model="ir.ui.view">
+        <field name="name">woo.import.log.tree</field>
+        <field name="model">woo.import.log</field>
+        <field name="arch" type="xml">
+            <tree decoration-danger="status=='error'" decoration-success="status=='completed'" decoration-info="status=='running'">
+                <field name="importer_id"/>
+                <field name="start_date"/>
+                <field name="end_date"/>
+                <field name="status"/>
+                <field name="orders_created"/>
+                <field name="orders_skipped"/>
+                <field name="duration" widget="float_time"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Vista de búsqueda para el registro de importaciones -->
+    <record id="view_woo_import_log_search" model="ir.ui.view">
+        <field name="name">woo.import.log.search</field>
+        <field name="model">woo.import.log</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="importer_id"/>
+                <filter string="Éxito" name="completed" domain="[('status','=','completed')]"/>
+                <filter string="Error" name="error" domain="[('status','=','error')]"/>
+                <filter string="En Proceso" name="running" domain="[('status','=','running')]"/>
+                <group expand="0" string="Agrupar Por">
+                    <filter string="Importador" name="group_by_importer_id" context="{'group_by': 'importer_id'}"/>
+                    <filter string="Estado" name="group_by_status" context="{'group_by': 'status'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!-- Vista formulario para pedidos de venta con campos de WooCommerce -->
+    <record id="view_sale_order_form_woo" model="ir.ui.view">
+        <field name="name">sale.order.form.woo</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+                <page string="WooCommerce" attrs="{'invisible': [('woo_order_id', '=', False)]}">
+                    <group>
+                        <group>
+                            <field name="woo_order_id"/>
+                            <field name="woo_order_number"/>
+                        </group>
+                        <group>
+                            <field name="woo_order_key"/>
+                        </group>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>

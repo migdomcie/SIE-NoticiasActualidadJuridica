@@ -1,0 +1,44 @@
+<svg width="560" height="280" viewBox="0 0 560 280" xmlns="http://www.w3.org/2000/svg">
+  <!-- Fondo del banner -->
+  <rect x="0" y="0" width="560" height="280" fill="#f8f9fa"/>
+  
+  <!-- Degradado de fondo para darle estilo -->
+  <rect x="0" y="0" width="560" height="280" fill="url(#grad)"/>
+  
+  <!-- Definición del degradado -->
+  <defs>
+    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#7c7bad;stop-opacity:0.2"/>
+      <stop offset="100%" style="stop-color:#9b5c8f;stop-opacity:0.2"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Título del módulo -->
+  <text x="280" y="80" font-family="Roboto, sans-serif" font-size="40" font-weight="bold" text-anchor="middle" fill="#333333">WooCommerce Order Importer</text>
+  
+  <!-- Descripción -->
+  <text x="280" y="120" font-family="Roboto, sans-serif" font-size="20" text-anchor="middle" fill="#555555">Sincroniza tus pedidos de WooCommerce con Odoo</text>
+  
+  <!-- Línea divisoria -->
+  <line x1="160" y1="140" x2="400" y2="140" stroke="#7c7bad" stroke-width="2"/>
+  
+  <!-- Logos estilizados -->
+  <g transform="translate(180, 180)">
+    <!-- Logo WooCommerce simplificado -->
+    <circle cx="0" cy="0" r="40" fill="#9b5c8f"/>
+    <path d="M0 -25 L-20 25 L-15 25 L-10 10 L10 10 L15 25 L20 25 Z" fill="white"/>
+    <path d="M-5 0 L0 -10 L5 0 Z" fill="white"/>
+  </g>
+  
+  <!-- Flecha de importación -->
+  <g transform="translate(280, 180)">
+    <rect x="-10" y="-5" width="20" height="10" fill="#7c7bad"/>
+    <path d="M10 0 L30 0 L20 15 Z" fill="#7c7bad"/>
+  </g>
+  
+  <!-- Logo Odoo simplificado -->
+  <g transform="translate(380, 180)">
+    <circle cx="0" cy="0" r="40" fill="#7c7bad"/>
+    <text x="0" y="15" font-family="Arial, sans-serif" font-size="50" font-weight="bold" text-anchor="middle" fill="white">o</text>
+  </g>
+</svg>

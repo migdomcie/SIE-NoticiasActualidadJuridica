@@ -1,0 +1,20 @@
+<svg viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
+  <!-- Fondo -->
+  <rect x="0" y="0" width="128" height="128" rx="16" fill="#7c7bad"/>
+  
+  <!-- Círculo central -->
+  <circle cx="64" cy="64" r="54" fill="#ffffff"/>
+  
+  <!-- Logo de WooCommerce simplificado (W) -->
+  <path d="M64 30c-18.778 0-34 15.222-34 34s15.222 34 34 34 34-15.222 34-34-15.222-34-34-34zm0 6c15.464 0 28 12.536 28 28s-12.536 28-28 28-28-12.536-28-28 12.536-28 28-28z" fill="#9b5c8f"/>
+  
+  <!-- W de WooCommerce -->
+  <path d="M64 40c-13.255 0-24 10.745-24 24s10.745 24 24 24 24-10.745 24-24-10.745-24-24-24zm-6 12l2.5 13.333L64 56l3.5 9.333L70 52h6l-4.5 24h-5l-2.5-13.333L60.5 76h-5L51 52h7z" fill="#9b5c8f"/>
+  
+  <!-- Flecha de importación -->
+  <path d="M28 88l8 8 8-8h-6v-10h-4v10h-6z" fill="#7c7bad"/>
+  
+  <!-- Logo odoo (o-o) simplificado -->
+  <circle cx="92" cy="88" r="6" fill="#7c7bad"/>
+  <circle cx="108" cy="88" r="6" fill="#7c7bad"/>
+</svg>

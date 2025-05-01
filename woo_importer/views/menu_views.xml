@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Acción para abrir el importador -->
+    <record id="action_woo_order_importer" model="ir.actions.act_window">
+        <field name="name">Importador de WooCommerce</field>
+        <field name="res_model">woo.order.importer</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{'search_default_active': 1}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Crea tu primer importador de WooCommerce
+            </p>
+            <p>
+                Configura una conexión con tu tienda WooCommerce para importar pedidos.
+            </p>
+        </field>
+    </record>
+
+    <!-- Acción para abrir los registros de importación -->
+    <record id="action_woo_import_log" model="ir.actions.act_window">
+        <field name="name">Registros de Importación</field>
+        <field name="res_model">woo.import.log</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{'search_default_group_by_importer_id': 1}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Aún no hay registros de importación
+            </p>
+            <p>
+                Los registros se crearán automáticamente cuando ejecutes importaciones.
+            </p>
+        </field>
+    </record>
+
+    <!-- Menú principal -->
+    <menuitem id="menu_woo_importer_root"
+        name="WooCommerce"
+        web_icon="woo_order_importer,static/description/icon.png"
+        sequence="100"/>
+
+    <!-- Submenús -->
+    <menuitem id="menu_woo_importer"
+        name="Importadores"
+        parent="menu_woo_importer_root"
+        action="action_woo_order_importer"
+        sequence="10"/>
+
+    <menuitem id="menu_woo_import_log"
+        name="Registros de Importación"
+        parent="menu_woo_importer_root"
+        action="action_woo_import_log"
+        sequence="20"/>
+
+    <!-- Enlace a configuración -->
+    <menuitem id="menu_woo_importer_config"
+        name="Configuración"
+        parent="menu_woo_importer_root"
+        sequence="100"/>
+</odoo>

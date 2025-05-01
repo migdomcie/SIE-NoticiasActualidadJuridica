@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_woo_order_importer_manager,woo.order.importer manager,model_woo_order_importer,sales_team.group_sale_manager,1,1,1,1
+access_woo_order_importer_user,woo.order.importer user,model_woo_order_importer,sales_team.group_sale_salesman,1,0,0,0
+access_woo_status_mapping_manager,woo.status.mapping manager,model_woo_status_mapping,sales_team.group_sale_manager,1,1,1,1
+access_woo_status_mapping_user,woo.status.mapping user,model_woo_status_mapping,sales_team.group_sale_salesman,1,0,0,0
+access_woo_import_log_manager,woo.import.log manager,model_woo_import_log,sales_team.group_sale_manager,1,1,1,1
+access_woo_import_log_user,woo.import.log user,model_woo_import_log,sales_team.group_sale_salesman,1,0,0,0
