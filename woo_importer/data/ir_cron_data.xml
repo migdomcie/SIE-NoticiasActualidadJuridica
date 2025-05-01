@@ -1,0 +1,27 @@
+<!-- Archivo: data/ir_cron_data.xml -->
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Tarea programada para importación automática -->
+    <record id="ir_cron_woo_order_import" model="ir.cron">
+        <field name="name">WooCommerce: Importación automática de pedidos</field>
+        <field name="model_id" ref="model_woo_order_importer"/>
+        <field name="state">code</field>
+        <field name="code">model._run_scheduled_import()</field>
+        <field name="interval_number">15</field>
+        <field name="interval_type">minutes</field>
+        <field name="numbercall">-1</field>
+        <field name="active">True</field>
+        <field name="doall">False</field>
+    </record>
+    
+    <!-- Parámetros de configuración -->
+    <record id="config_auto_create_products" model="ir.config_parameter">
+        <field name="key">woo_order_importer.auto_create_products</field>
+        <field name="value">False</field>
+    </record>
+    
+    <record id="config_auto_confirm_orders" model="ir.config_parameter">
+        <field name="key">woo_order_importer.auto_confirm_orders</field>
+        <field name="value">False</field>
+    </record>
+</odoo>
