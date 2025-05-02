@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Vista de formulario para el importador -->
+    <record id="view_woo_order_importer_form" model="ir.ui.view">
+        <field name="name">woo.order.importer.form</field>
+        <field name="model">woo.order.importer</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form string="Importador de WooCommerce">
+                <header>
+                    <button name="import_orders" string="Importar Ahora" type="object" class="oe_highlight"/>
+                </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="toggle_active" type="object" class="oe_stat_button" icon="fa-archive">
+                            <field name="active" widget="boolean_button" options="{'terminology': 'archive'}"/>
+                        </button>
+                    </div>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" placeholder="Nombre de la conexión..."/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="company_id" groups="base.group_multi_company"/>
+                            <field name="woo_api_url" placeholder="https://tutienda.com"/>
+                            <field name="woo_key" password="True"/>
+                            <field name="woo_secret" password="True"/>
+                            <field name="interval"/>
+                        </group>
+                        <group>
+                            <field name="order_status_to_import"/>
+                            <field name="custom_status"/>
+                            <field name="pricelist_id"/>
+                            <field name="warehouse_id"/>
+                            <field name="team_id"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Mapeo de Estados" name="status_mapping"/>
+                        <page string="Historial de Importaciones" name="import_history"/>
+                        <page string="Estadísticas" name="stats">
+                            <group>
+                                <group>
+                                    <field name="import_count"/>
+                                    <field name="total_orders_imported"/>
+                                </group>
+                                <group>
+                                    <field name="last_import_date"/>
+                                </group>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Vista de lista para el importador -->
+    <record id="view_woo_order_importer_tree" model="ir.ui.view">
+        <field name="name">woo.order.importer.tree</field>
+        <field name="model">woo.order.importer</field>
+        <field name="type">list</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="woo_api_url"/>
+                <field name="interval"/>
+                <field name="last_import_date"/>
+                <field name="import_count"/>
+                <field name="total_orders_imported"/>
+                <field name="active" invisible="1"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Vista de búsqueda para el importador -->
+    <record id="view_woo_order_importer_search" model="ir.ui.view">
+        <field name="name">woo.order.importer.search</field>
+        <field name="model">woo.order.importer</field>
+        <field name="type">search</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="woo_api_url"/>
+                <filter string="Activos" name="active" domain="[('active','=',True)]"/>
+                <filter string="Archivados" name="inactive" domain="[('active','=',False)]"/>
+                <group expand="0" string="Agrupar Por">
+                    <filter string="Intervalo" name="group_by_interval" context="{'group_by': 'interval'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!-- Vista de formulario para pedidos de venta con campos de WooCommerce -->
+    <record id="view_sale_order_form_woo" model="ir.ui.view">
+        <field name="name">sale.order.form.woo</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+                <page string="WooCommerce">
+                    <group>
+                        <group>
+                            <field name="woo_order_id"/>
+                            <field name="woo_order_number"/>
+                        </group>
+                        <group>
+                            <field name="woo_order_key"/>
+                        </group>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

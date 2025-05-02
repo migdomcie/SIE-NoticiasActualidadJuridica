@@ -53,7 +53,13 @@ class WooCommerceOrderImporter(models.Model):
     team_id = fields.Many2one('crm.team', string='Equipo de ventas')
     
     # Mapeo de estados
-    woo_status_mapping_ids = fields.One2many('woo.status.mapping', 'importer_id', string='Mapeo de estados')
+    importer_id = fields.Many2one('woo.order.importer', string="Importador")
+    woo_status = fields.Char(string="Estado WooCommerce")
+    odoo_status = fields.Selection([
+        ('draft', 'Borrador'),
+        ('sale', 'Confirmado'),
+        ('cancel', 'Cancelado'),
+    ], string="Estado Odoo")
     
     # Log de importaciones
     import_log_ids = fields.One2many('woo.import.log', 'importer_id', string='Registro de importaciones')
