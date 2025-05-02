@@ -4,7 +4,7 @@
     <!-- Producto genérico para líneas de WooCommerce no encontradas -->
     <record id="product_woo_generic_template" model="product.template">
         <field name="name">Producto WooCommerce</field>
-        <field name="type">product</field>
+        <field name="detailed_type">product</field>
         <field name="sale_ok">True</field>
         <field name="purchase_ok">False</field>
         <field name="default_code">WOO-GENERIC</field>
