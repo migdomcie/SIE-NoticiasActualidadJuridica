@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="maquinaria_menu_root" name="Maquinaria">
+        <menuitem id="maquinaria_advertisement_menu" name="Maquinaria">
+            <menuitem id="maquinaria_property_menu_action" action="maquinaria_property_action"/>
+        </menuitem>
+    </menuitem>
+</odoo>

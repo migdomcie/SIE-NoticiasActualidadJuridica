@@ -1,0 +1,1 @@
+from . import maquinaria_property
